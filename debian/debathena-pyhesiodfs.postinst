@@ -31,8 +31,6 @@ case "$1" in
 	# fuse, a dependency, was configured, before this script is run.
 	if grep -q "^fuse:" /etc/group; then
 	    adduser pyhesiodfs fuse
-	else
-	    echo "The group fuse does not exist on your system. Skipping adding pyhesiodfs to it." >&2
 	fi
 
 	if hash invoke-rc.d 2>/dev/null; then
