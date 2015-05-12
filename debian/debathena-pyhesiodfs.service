@@ -1,0 +1,18 @@
+[Unit]
+Description=Hesiod automounter for Athena lockers
+Requires=openafs-client.service
+After=openafs-client.service
+
+[Service]
+Type=forking
+Environment="pyhesiodfs_dir=/mit"
+OOMScoreAdjust=-1000
+ExecStartPre=/bin/mkdir -p /mit
+ExecStartPre=/bin/chown root:pyhesiodfs ${pyhesiodfs_dir}
+ExecStartPre=/bin/chmod 770 ${pyhesiodfs_dir}
+ExecStart=/usr/bin/pyhesiodfs -f ${pyhesiodfs_dir} -o nonempty
+ExecStopPost=/bin/umount -l ${pyhesiodfs_dir}
+
+[Install]
+WantedBy=multi-user.target
+
