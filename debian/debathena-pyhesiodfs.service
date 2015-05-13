@@ -1,3 +1,6 @@
+# Author: Lizhou Sha <slz@mit.edu>
+# This file is part of the debathena-pyhesiodfs package.
+
 [Unit]
 Description=Hesiod automounter for Athena lockers
 Requires=openafs-client.service
