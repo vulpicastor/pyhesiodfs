@@ -5,6 +5,7 @@
 Description=Hesiod automounter for Athena lockers
 Requires=openafs-client.service
 After=local-fs.target network.target openafs-client.service
+Before=umount.target
 
 [Service]
 Type=simple
