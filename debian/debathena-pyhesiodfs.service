@@ -13,5 +13,4 @@ ExecStartPre=/bin/chmod 770 ${pyhesiodfs_dir}
 ExecStart=/usr/bin/pyhesiodfs -f ${pyhesiodfs_dir} -o nonempty
 
 [Install]
-WantedBy=multi-user.target remote-fs.target openafs-client.service
-
+WantedBy=multi-user.target
