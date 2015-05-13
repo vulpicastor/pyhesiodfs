@@ -1,7 +1,7 @@
 [Unit]
 Description=Hesiod automounter for Athena lockers
 Requires=openafs-client.service
-After=openafs-client.service
+After=local-fs.target network.target openafs-client.service
 
 [Service]
 Type=simple
@@ -14,5 +14,5 @@ ExecStart=/usr/bin/pyhesiodfs -f ${pyhesiodfs_dir} -o nonempty
 ExecStopPost=/bin/umount -l ${pyhesiodfs_dir}
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=multi-user.target remote-fs.target openafs-client.service
 
