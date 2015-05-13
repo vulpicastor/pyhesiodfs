@@ -7,11 +7,10 @@ After=local-fs.target network.target openafs-client.service
 Type=simple
 Environment="pyhesiodfs_dir=/mit"
 OOMScoreAdjust=-1000
-ExecStartPre=/bin/mkdir -p /mit
+ExecStartPre=/bin/mkdir -p ${pyhesiodfs_dir}
 ExecStartPre=/bin/chown root:pyhesiodfs ${pyhesiodfs_dir}
 ExecStartPre=/bin/chmod 770 ${pyhesiodfs_dir}
 ExecStart=/usr/bin/pyhesiodfs -f ${pyhesiodfs_dir} -o nonempty
-ExecStopPost=/bin/umount -l ${pyhesiodfs_dir}
 
 [Install]
 WantedBy=multi-user.target remote-fs.target openafs-client.service
