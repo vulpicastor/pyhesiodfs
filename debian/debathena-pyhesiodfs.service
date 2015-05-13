@@ -4,7 +4,7 @@ Requires=openafs-client.service
 After=openafs-client.service
 
 [Service]
-Type=forking
+Type=simple
 Environment="pyhesiodfs_dir=/mit"
 OOMScoreAdjust=-1000
 ExecStartPre=/bin/mkdir -p /mit
